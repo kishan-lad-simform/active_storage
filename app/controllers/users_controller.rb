@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :find_user, only: [ :show, :destroy ]
   def index
     @users = User.all
   end
@@ -16,15 +17,17 @@ class UsersController < ApplicationController
     end
   end
 
-  def show 
-    find_user
-  end
+  def show ; end
 
   def destroy
-    find_user
     @user.avatar.purge
-    @user.destroy
-    redirect_to root_path
+    if @user.destroy
+      flash[:success] = "User deleted successfully."
+      redirect_to root_path
+    else
+      flash.now[:alert] = "User not deleted"
+      render :index, status: 422
+    end
   end
 
   private
