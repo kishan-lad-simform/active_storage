@@ -1,0 +1,16 @@
+<div class="container text-center">
+  <h2 class="text-center">User Profile</h1><br/>
+  <%= link_to "Back", root_path %> <br>
+  <div align="center">
+    <div class="card" style="width: 15rem;">
+      <%= image_tag @user.avatar, class: "card-img-top" %>
+      <div class="card-body">
+        <p class="card-text">
+          <b> Name: </b>  <%= @user.name %> <br>
+          <b> Email: </b>  <%= @user.email %> <br>
+          <b> Contact: </b>  <%= @user.contact %> <br>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>  
